@@ -1,0 +1,39 @@
+
+.bd{
+    border-bottom: 3px solid #111;
+}
+.register-container{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #111;
+}
+.register-image{
+    width: 100%;
+    border-radius: 25px
+}
+.register-image-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text-muted{
+    display: none !important;
+}
+.form-container{
+    width: 40%;
+    margin-bottom: 40px;
+}
+.form-bottom{
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+.logged-in-nav{
+    display: flex;
+    direction: ltr;
+    justify-content: flex-end;
+    align-items: stretch
+}

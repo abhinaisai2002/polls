@@ -1,0 +1,39 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+}
+.back-ground-image{
+    padding-top: 20px;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+.navbar{
+    display: block;
+    position: absolute!important;
+    top: 0!important;
+    left: 0!important;
+    right: 0!important;
+    background-color: #111 !important;
+}
+.btn.btn-dark{
+    position: absolute !important;
+    left: 45% !important;
+    top: 40% !important;
+    background-color: #111 !important;
+    font-weight: 450 !important;
+    font-family: sans-serif !important;
+    min-width: none;
+}
+.btn.btn-dark:hover{
+    background-color: #383838 !important
+}
+.matter{
+    max-width: 60% !important;
+    position: absolute !important;
+    left: 20%;
+    top: 70%;
+    
+
+}

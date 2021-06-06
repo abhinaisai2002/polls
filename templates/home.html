@@ -1,0 +1,56 @@
+
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+
+    <!-- Image and text -->
+    <div class="back-ground">
+        <div>
+            <img class='back-ground-image' src="{% static 'images/bg.jpg' %}" alt="">
+        </div>
+        
+    <nav class="navbar navbar-dark" style="background-color: #111;">
+        <a class="navbar-brand h1" href="#">
+            <h2>PollPoller</h2>
+        </a>
+    </nav>
+       <a href="{% url 'users:register' %}" class="text-white" style="text-decoration: none;">
+            <button class="btn btn-dark p-2 h5">Get Started</button>
+        </a>
+       <div class="matter">
+            <p class="text-white h5">
+            
+            This website allows you to post some polls on different aspects by different individuals.
+            
+            Gearing up to the opinions of every individual, you will have a few questions in which every participant can poll
+            according to their views.
+            
+            Each answer should be selected from the given set of options.
+            
+            Every option you choose, will be your opinion for that particular question.
+            
+            Extending to this, you can also comment on the imposed question when you are not satisfied with the given set of
+            options.
+            
+            Hope you will find this interesting.
+            
+            There we go!!
+
+                
+            </p>
+       </div>
+        
+    </div>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</body>

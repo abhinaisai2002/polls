@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container mt-5 register-container ">
+        <div class="register-image-container">
+            <img class="register-image" src="{% static 'images/register.jpg' %}" alt="">
+        </div>
+        <div class="form-container">
+            <form action="" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    <div class="bd bottom mb-3">
+                        <h2>Register Your Account</h2>
+                    </div>
+                    <div>
+                        {% for field in form %}
+                            {{field|as_crispy_field}}
+                        {% endfor %}
+                    </div>
+                </fieldset>
+                <div  class="form-bottom ">
+                    <p class="mr-2">
+                        Already have an account? 
+                        <a href="{% url 'users:login' %}">Sign In</a> </p>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </form>
+        </div>
+       
+    </div>
+{% endblock %}

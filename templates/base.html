@@ -1,0 +1,38 @@
+{% load static  %}
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </head>
+
+    <body>
+
+        <!-- Image and text -->
+        <nav class="navbar navbar-dark" style="background-color: #111;">
+            <a class="navbar-brand h1" href="#">
+                <h2>PollPoller</h2>
+            </a>
+            {% if user.is_authenticated %}
+                <div class="logged-in-nav">
+                    <h2 class="text-white mr-3">Hello {{user.username}}</h2>
+                    <a href="{% url 'users:logout' %}"><button class="btn btn-light">
+                        <h5>Logout</h5>
+                    </button></a>
+                </div>
+            {% endif %}
+            
+        </nav>
+        <div >
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </body>
+
+</html>
