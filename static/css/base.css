@@ -37,3 +37,15 @@
     justify-content: flex-end;
     align-items: stretch
 }
+.suggestions-box{
+    border-radius: 0px 0px 5px 5px !important;
+    position: absolute !important;
+    width: 13rem !important;
+}
+form{
+    padding: 0px;
+    margin: 0px;
+}
+nav{
+    position: relative;
+}

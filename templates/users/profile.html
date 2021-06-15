@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div>
+        <div class="container border rounded border-dark p-4 mt-5 mb-4">
+            <div class="container border-bottom border-dark h3">
+                Update Your Details
+            </div>
+            <div class="container">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form | crispy}}
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-dark">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container border rounded border-dark p-4">
+            <div class="container">
+                {% for poll in polls %}
+                    <div class="row">
+                        {% for each in poll %}
+                        <div class="col">
+                            
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="{% url 'polls:poll' each.id %}">{{each.title}}</a>
+                                    </h5>
+                                    <h6 class="card-subtitle mb-2">
+                                        Created on {{each.date|date:"F j, Y, g:i A"}}
+                                    </h6>
+                                    <div class="d-flex">
+                                        <p class="mr-3">Votes : {{each.votedby_set.all|length}}</p>
+                                        <p>Comments : {{ each.commentby_set.all|length }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock %}

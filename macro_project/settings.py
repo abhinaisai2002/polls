@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'crispy_forms'
+    'crispy_forms',
+    'polls'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'abhinaisai10@gmail.com'
+EMAIL_HOST_PASSWORD = 'abhinaisai'

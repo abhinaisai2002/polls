@@ -7,29 +7,75 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        
     </head>
 
     <body>
 
         <!-- Image and text -->
-        <nav class="navbar navbar-dark" style="background-color: #111;">
-            <a class="navbar-brand h1" href="#">
+        <nav class="navbar navbar-dark sticky-top " style="background-color: #111;">
+            <a class="navbar-brand h1 mt-3 " href="{% url 'polls:allpolls' %}">
                 <h2>PollPoller</h2>
             </a>
+            
             {% if user.is_authenticated %}
-                <div class="logged-in-nav">
-                    <h2 class="text-white mr-3">Hello {{user.username}}</h2>
-                    <a href="{% url 'users:logout' %}"><button class="btn btn-light">
-                        <h5>Logout</h5>
-                    </button></a>
+                <div class="d-flex">
+                    <div class="mr-3 pt-1">
+                        <div class="">
+                            <input class="form-control  search-polls" type="search" placeholder="Search a Poll"
+                                aria-label="Search">
+                            <ul class="list-group suggestions-box border border-dark">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="logged-in-nav ">
+                        <h2 class="text-white mr-3">Hello  <a href="{% url 'users:profile' %}" style="color: white;text-decoration: none;">{{user.username}}</a> </h2>
+                        <a href="{% url 'users:logout' %}"><button class="btn btn-light">
+                                <h5>Logout</h5>
+                            </button></a>
+                    </div>
                 </div>
+                
             {% endif %}
             
         </nav>
-        <div >
+        <div class="mb-4" >
             {% block content %}
             {% endblock %}
         </div>
+        
+        <script>
+            $(document).ready(function (){
+
+                $('.search-polls').on('input',(e)=>{
+                    $.ajax({
+                        type : 'GET',
+                        url : '/searchpoll/',
+                        data : {
+                            'name' : e.target.value
+                        }
+                    }).done((res)=>{
+                        console.log(res.data)
+                        if(res.data === []){
+                            
+                            $('.suggestions-box').empty()
+                            return ;
+                        }
+                        $('.suggestions-box').empty()
+                        res.data.forEach( item =>{
+                            console.log(item)
+                            let li = document.createElement('a')
+                            li.setAttribute('href','/allpolls/'+item[1])
+                            li.className='list-group-item-action bg-white text-dark p-2'
+                            li.innerHTML = item[0]
+                            $('.suggestions-box').append(li)
+                        })
+                    })
+                })
+
+            });
+        </script>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">

@@ -14,6 +14,13 @@
                     <h2>Login Into Your Account</h2>
                 </div>
                 <div>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{message.tags}}">{{message}}</div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
                     {{form|crispy}}
                 </div>
             </fieldset>
