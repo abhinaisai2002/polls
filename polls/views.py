@@ -30,7 +30,7 @@ def polls_view(request):
         DATA.append(data)
 
     pageNumber = request.GET.get('page')
-    paginator = Paginator(DATA, 5)
+    paginator = Paginator(DATA, 10)
     pagePolls = paginator.get_page(pageNumber)
     context = {
         'DATA':pagePolls,
@@ -39,6 +39,7 @@ def polls_view(request):
 
 def submit_poll_view(request):
     if request.method == 'POST':
+        print(request)
         pollId = request.POST.get('pollId')
         optionId = request.POST.get('optionId')
         poll = Poll.objects.get(id = pollId)
@@ -59,7 +60,7 @@ def submit_poll_view(request):
             data['id'] = option.id
             total_votes += option.pollOptionVotes
             DATA.append(data)
-    return JsonResponse({'data': DATA, 'total_votes': total_votes,'polledOpt' : polloption.pollOption})
+        return JsonResponse({'data': DATA, 'total_votes': total_votes,'polledOpt' : polloption.pollOption})
 
 
 def get_poll_data(request):
@@ -109,6 +110,7 @@ def comment_view(request):
     return JsonResponse({'comment' : data})
 
 
+@login_required(login_url='users:login')
 def poll_view(request,id):
     poll = Poll.objects.get(id = id)
     try:

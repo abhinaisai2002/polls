@@ -9,3 +9,5 @@ urlpatterns=[
     path('logout/',views.logout_view,name='logout'),
     path('profile/',views.profile_view,name='profile')
 ]
+
+handler404 = 'macro_project.views.no_page_found'

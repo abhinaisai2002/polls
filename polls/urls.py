@@ -11,3 +11,5 @@ urlpatterns = [
     path('comment/', views.comment_view, name='comment'),
     path('searchpoll/',views.search_view,name='search')
 ]
+
+handler404 = 'macro_project.views.no_page_found'

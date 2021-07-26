@@ -23,4 +23,5 @@ urlpatterns = [
     path('',views.home_view,name='home'),
 ]
 
+handler404 = 'macro_project.views.no_page_found'
 

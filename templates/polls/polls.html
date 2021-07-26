@@ -112,7 +112,7 @@
                     </form>
                    
                     <div>
-                        <a  href="{% url 'polls:poll' poll.poll.id %}">View all comments</a>
+                        <a  href="{% url 'polls:poll' poll.poll.id %}" id= poll_{{poll.poll.id}}>View all <span>{{poll.poll.commentby_set.all|length}}</span> comments</a>
                     </div>
                 </div>
             </div>
@@ -268,6 +268,9 @@
                             console.log(data)
                             inp.value = ''
                             btn.textContent = 'Commented'
+                            const z = document.querySelector('#poll_'+pollId)
+                            z.querySelector('span').textContent = Number(z.querySelector('span').textContent)+1;
+
                             setTimeout(()=>{
                                 btn.textContent='Comment'
                             },3000)
