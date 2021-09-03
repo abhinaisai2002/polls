@@ -2,6 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
+{% load socialaccount %}
 <div class="container mt-5 register-container ">
     <div class="register-image-container">
         <img class="register-image" src="{% static 'images/register.jpg' %}" alt="">
@@ -31,8 +32,13 @@
                 </p>
                 <button class="btn btn-primary">Sign In</button>
             </div>
+            <div class="d-flex justify-content-end mb-4">
+                <a href="{% url 'password_reset' %}">Forgot password?</a>
+            </div>
         </form>
+        <a class="btn btn-danger text-center d-flex align-items-center justify-content-center text-center"
+            href="{% provider_login_url 'google' %}">Sign in with Google</a>
     </div>
-
 </div>
+
 {% endblock %}

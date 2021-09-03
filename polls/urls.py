@@ -9,7 +9,7 @@ urlpatterns = [
     path('getpolldata/',views.get_poll_data,name='getpolls'),
     path('toppolls/',views.top_polls,name='toppolls'),
     path('comment/', views.comment_view, name='comment'),
-    path('searchpoll/',views.search_view,name='search')
+    path('searchpoll/',views.search_view,name='search'),
 ]
 
 handler404 = 'macro_project.views.no_page_found'

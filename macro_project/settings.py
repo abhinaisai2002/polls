@@ -39,7 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'crispy_forms',
-    'polls'
+    'polls',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -65,13 +71,20 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
-
+SITE_ID = 1
 WSGI_APPLICATION = 'macro_project.wsgi.application'
+AUTHENTICATION_BACKENDS = (
+    
+    'django.contrib.auth.backends.ModelBackend',
 
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+)
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -115,8 +128,18 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         # For each OAuth based provider, either add a ``SocialApp``
+#         # (``socialaccount`` app) containing the required client
+#         # credentials, or list them here:
+#         'APP': {
+#             'client_id': '1038349266590-vurf6ofbninng8pm09j7tffcihedarkp.apps.googleusercontent.com',
+#             'secret': 'ltGm7TcM1rRzh_dcteXgkU9l',
+#             'key': ''
+#         }
+#     }
+# }
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -126,10 +149,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
+LOGIN_REDIRECT_URL = '/allpolls'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'abhinaisai10@gmail.com'
-EMAIL_HOST_PASSWORD = 'abhinaisai'
+EMAIL_HOST_USER = 'abhinaisai15@gmail.com'
+EMAIL_HOST_PASSWORD = 'changedpassword'
